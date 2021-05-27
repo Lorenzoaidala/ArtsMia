@@ -4,8 +4,8 @@ public class Adiacenza {
 
 	private Integer id1;
 	private Integer id2;
-	private Integer peso;
-	public Adiacenza(Integer id1, Integer id2, Integer peso) {
+	private int peso;
+	public Adiacenza(Integer id1, Integer id2, int peso) {
 		super();
 		this.id1 = id1;
 		this.id2 = id2;
@@ -23,10 +23,10 @@ public class Adiacenza {
 	public void setId2(Integer id2) {
 		this.id2 = id2;
 	}
-	public Integer getPeso() {
+	public int getPeso() {
 		return peso;
 	}
-	public void setPeso(Integer peso) {
+	public void setPeso(int peso) {
 		this.peso = peso;
 	}
 	

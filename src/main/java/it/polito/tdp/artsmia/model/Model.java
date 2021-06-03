@@ -21,25 +21,26 @@ public class Model {
 		dao = new ArtsmiaDAO();
 		idMap = new HashMap<Integer, ArtObject>();
 	}
-	
+
 	public void creaGrafo() {
 		//conviene creare qua il grafo e non nel costruttore
 		//perchè chiamando il metodo il grafo è distrutto e ricreato da zero
 		grafo = new SimpleWeightedGraph<>(DefaultWeightedEdge.class);
-		
+
 		//Aggiunta dei vertici
 		//1) recupero tutti gli SrtObject dal DB
 		//2) Li inserisco come oggetti
 		//List<ArtObject> vertici = dao.listObjects();
 		dao.listObjects(idMap);
 		Graphs.addAllVertices(grafo, idMap.values()); 
-		
+
 		//Aggiungere gli archi
-		
-		 for(Adiacenza a: dao.getAdiacenze()) {
-			
-				 Graphs.addEdge(this.grafo, idMap.get(a.getId1()),idMap.get(a.getId2()), idMap.get(a.getPeso())); 
-			 
-		 }
+
+
+		for(Adiacenza a : dao.getAdiacenze()) {
+			Graphs.addEdge(this.grafo, idMap.get(a.getId1()),idMap.get(a.getId2()), a.getPeso());
+		}
+
+
 	}
 }
